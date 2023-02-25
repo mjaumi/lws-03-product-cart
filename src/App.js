@@ -22,7 +22,10 @@ function App() {
             <div className='productWrapper'>
               <div className='productContainer' id='lws-productContainer'>
                 {
-                  products.map(product => <ProductItem />)
+                  products.map(product => <ProductItem
+                    key={product.id}
+                    product={product}
+                  />)
                 }
               </div>
               <div>
