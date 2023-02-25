@@ -17,7 +17,7 @@ const Cart = () => {
             <div className='cartListContainer'>
                 <div className='space-y-6'>
                     {
-                        cartItems?.map(cartItem => <CartItem
+                        cartItems.map(cartItem => <CartItem
                             key={cartItem.id}
                             cartItem={cartItem}
                         />)

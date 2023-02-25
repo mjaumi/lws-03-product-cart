@@ -5,6 +5,8 @@ import Navbar from './components/Navbar/Navbar';
 import ProductInputForm from './components/ProductInputForm/ProductInputForm';
 import ProductItem from './components/ProductItem/ProductItem';
 import './output.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   // integration of react hooks here
@@ -38,6 +40,7 @@ function App() {
             <Cart />
         }
       </main>
+      <ToastContainer position='top-center' theme='colored' />
     </div>
   );
 }
