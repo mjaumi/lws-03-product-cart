@@ -4,10 +4,10 @@ import CartItem from '../CartItem/CartItem';
 
 const Cart = () => {
     return (
-        <div class="container 2xl:px-8 px-2 mx-auto">
-            <h2 class="mb-8 text-xl font-bold">Shopping Cart</h2>
-            <div class="cartListContainer">
-                <div class="space-y-6">
+        <div className='container 2xl:px-8 px-2 mx-auto'>
+            <h2 className='mb-8 text-xl font-bold'>Shopping Cart</h2>
+            <div className='cartListContainer'>
+                <div className='space-y-6'>
                     <CartItem />
                 </div>
 
