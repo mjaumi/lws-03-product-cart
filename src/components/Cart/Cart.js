@@ -17,10 +17,15 @@ const Cart = () => {
             <div className='cartListContainer'>
                 <div className='space-y-6'>
                     {
-                        cartItems.map(cartItem => <CartItem
-                            key={cartItem.id}
-                            cartItem={cartItem}
-                        />)
+                        cartItems.length ?
+                            cartItems.map(cartItem => <CartItem
+                                key={cartItem.id}
+                                cartItem={cartItem}
+                            />)
+                            :
+                            <div className='h-full w-full flex items-center justify-center'>
+                                <h3 className='text-xl'>No product to show in your cart.</h3>
+                            </div>
                     }
                 </div>
 

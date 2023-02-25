@@ -22,14 +22,21 @@ function App() {
         {
           rerouteToPage === 'home' ?
             <div className='productWrapper'>
-              <div className='productContainer' id='lws-productContainer'>
-                {
-                  products.map(product => <ProductItem
-                    key={product.id}
-                    product={product}
-                  />)
-                }
-              </div>
+              {
+                products.length ?
+                  <div className='productContainer' id='lws-productContainer'>
+                    {
+                      products.map(product => <ProductItem
+                        key={product.id}
+                        product={product}
+                      />)
+                    }
+                  </div>
+                  :
+                  <div className='h-full w-full flex items-center justify-center'>
+                    <h3 className='text-xl font-bold'>No product found. But you can add.</h3>
+                  </div>
+              }
               <div>
                 <div className='formContainer'>
                   <ProductInputForm />
