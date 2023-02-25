@@ -1,8 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteFromCart } from '../../redux/cart/actionCreators';
+import { increaseStock } from '../../redux/product/actionCreators';
 
 const CartItem = ({ cartItem }) => {
     // destructuring the cart item
-    const { productName, category, imgUrl, price, cartQuantity } = cartItem;
+    const { id, productName, category, imgUrl, price, cartQuantity } = cartItem;
+
+    // integration or react-redux hooks here
+    const dispatch = useDispatch();
+
+    // handler function to handle delete from cart feature
+    const deleteCartItemHandler = (productId, quantity) => {
+        dispatch(deleteFromCart(productId, quantity));
+        dispatch(increaseStock(productId, quantity));
+    }
 
     // rendering the cart item cards component here
     return (
@@ -33,7 +45,9 @@ const CartItem = ({ cartItem }) => {
             </div>
 
             <div className='flex items-center justify-center col-span-2 mt-4 md:justify-end md:mt-0'>
-                <button className='lws-removeFromCart'>
+                <button
+                    onClick={() => deleteCartItemHandler(id, cartQuantity)}
+                    className='lws-removeFromCart'>
                     <i className='text-lg text-red-400 fa-solid fa-trash'></i>
                 </button>
             </div>

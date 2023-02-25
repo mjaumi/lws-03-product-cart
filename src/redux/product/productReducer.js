@@ -31,10 +31,10 @@ const productReducer = (state = initialState, action) => {
             });
         case INCREASE_STOCK:
             return state.map(product => {
-                if (product.id === productId) {
+                if (product.id === action.payload.productId) {
                     return {
                         ...product,
-                        quantity: product.quantity + quantity,
+                        quantity: product.quantity + action.payload.quantity,
                     };
                 } else {
                     return product;

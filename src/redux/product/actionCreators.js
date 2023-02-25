@@ -9,10 +9,13 @@ export const addProduct = (product) => {
     }
 }
 
-export const increaseStock = (productId) => {
+export const increaseStock = (productId, quantity) => {
     return {
         type: INCREASE_STOCK,
-        payload: productId,
+        payload: {
+            productId,
+            quantity
+        },
     }
 }
 
