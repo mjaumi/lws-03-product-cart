@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Cart from './components/Cart/Cart';
+import Navbar from './components/Navbar/Navbar';
+import ProductInputForm from './components/ProductInputForm/ProductInputForm';
+import ProductItem from './components/ProductItem/ProductItem';
+import './output.css'
 
 function App() {
+  // integration of react hooks here
+  const [rerouteToPage, setRerouteToPage] = useState('home');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar setRerouteToPage={setRerouteToPage} />
+      <main class="py-16">
+        {
+          rerouteToPage === 'home' ?
+            <div class="productWrapper">
+              <div class="productContainer" id="lws-productContainer">
+                <ProductItem />
+              </div>
+              <div>
+                <div class="formContainer">
+                  <ProductInputForm />
+                </div>
+              </div>
+            </div>
+            :
+            <Cart />
+        }
+      </main>
     </div>
   );
 }
