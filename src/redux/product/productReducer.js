@@ -18,18 +18,18 @@ const productReducer = (state = initialState, action) => {
                 }
             ];
         case DECREASE_STOCK:
+            const { productId, quantity } = action.payload;
             return state.map(product => {
-                if (product.id === action.payload) {
+                if (product.id === productId) {
                     return {
                         ...product,
-                        quantity: product.quantity--,
+                        quantity: product.quantity - quantity,
                     };
                 } else {
                     return product;
                 }
             });
         case INCREASE_STOCK:
-            const { productId, quantity } = action.payload;
             return state.map(product => {
                 if (product.id === productId) {
                     return {
