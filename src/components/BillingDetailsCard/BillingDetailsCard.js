@@ -1,6 +1,8 @@
 import React from 'react';
 
-const BillingDetailsCard = () => {
+const BillingDetailsCard = ({ totalBill }) => {
+
+    // rendering billing details card component here
     return (
         <div className='billDetailsCard'>
             <h4 className='mt-2 mb-8 text-xl font-bold text-center'>Bill Details</h4>
@@ -8,7 +10,7 @@ const BillingDetailsCard = () => {
 
                 <div className='flex items-center justify-between'>
                     <p>Sub Total</p>
-                    <p>BDT <span className='lws-subtotal'>8800</span></p>
+                    <p>BDT <span className='lws-subtotal'>{totalBill}</span></p>
                 </div>
 
                 <div className='flex items-center justify-between'>
@@ -23,7 +25,7 @@ const BillingDetailsCard = () => {
 
                 <div className='flex items-center justify-between pb-4'>
                     <p className='font-bold'>TOTAL</p>
-                    <p className='font-bold'>BDT <span className='lws-total'>8800</span></p>
+                    <p className='font-bold'>BDT <span className='lws-total'>{totalBill}</span></p>
                 </div>
                 <button className='placeOrderbtn'>place order</button>
             </div>

@@ -7,6 +7,9 @@ const Cart = () => {
     // integration of react-redux hooks here
     const cartItems = useSelector(state => state.cart.cartItems);
 
+    // this reducer function is calculating total bill
+    const totalBill = cartItems.reduce((total, cartItem) => total += (cartItem.price * cartItem.cartQuantity), 0);
+
     // rendering the cart component here
     return (
         <div className='container 2xl:px-8 px-2 mx-auto'>
@@ -22,7 +25,7 @@ const Cart = () => {
                 </div>
 
                 <div>
-                    <BillingDetailsCard />
+                    <BillingDetailsCard totalBill={totalBill} />
                 </div>
             </div>
         </div>
