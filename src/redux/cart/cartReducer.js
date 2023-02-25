@@ -5,22 +5,30 @@ import initialState from './initialState';
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const productExistsInCart = state.cartItems.filter(item => item.id === action.payload.id);
+            const productExistsInCart = state.cartItems.filter(item => item.id === action?.payload?.id);
+            let newCartItems = [];
+
+            if (productExistsInCart.length) {
+                newCartItems = state.cartItems.map(item => {
+                    if (productExistsInCart[0].id === item.id) {
+                        return {
+                            ...item,
+                            cartQuantity: item.cartQuantity + 1,
+                        }
+                    } else {
+                        return item;
+                    }
+                });
+            } else {
+                newCartItems = [...state.cartItems, {
+                    ...action.payload,
+                    cartQuantity: 1,
+                }];
+            }
+
             return {
                 totalCartItems: state.totalCartItems + 1,
-                cartItems: state.cartItems.map(item => {
-                    if (productExistsInCart) {
-                        return {
-                            ...item,
-                            cartQuantity: item.cartQuantity++,
-                        };
-                    } else {
-                        return {
-                            ...item,
-                            cartQuantity: 1,
-                        };
-                    }
-                })
+                cartItems: newCartItems,
             };
         case DELETE_FROM_CART:
             const { productId, cartQuantity } = action.payload;
