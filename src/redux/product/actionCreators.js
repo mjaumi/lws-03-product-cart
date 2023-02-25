@@ -1,4 +1,5 @@
 // action creators for product slice is declared here
+
 import { ADD_PRODUCT, DECREASE_STOCK, INCREASE_STOCK } from './actionTypes';
 
 export const addProduct = (product) => {
