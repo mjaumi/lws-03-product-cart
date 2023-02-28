@@ -14,8 +14,8 @@ const ProductInputForm = () => {
             productName: e.target.productName.value,
             category: e.target.category.value,
             imgUrl: e.target.imgUrl.value,
-            price: e.target.price.value,
-            quantity: e.target.quantity.value,
+            price: parseInt(e.target.price.value),
+            quantity: parseInt(e.target.quantity.value),
         }
 
         dispatch(addProduct(formData));
